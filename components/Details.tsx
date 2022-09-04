@@ -7,7 +7,8 @@ import { RootParamList } from './Container'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRoute } from '@react-navigation/native'
 
-// const key : any = 0e0eb620c4908d7ec0aaf255118dc362
+// const key1 : any = 0e0eb620c4908d7ec0aaf255118dc362
+ const key2 : string | number = 'c9749b9bde72adf4743f67678229e5e8'
  
 const Details = (   { route, navigation}: NativeStackScreenProps<RootParamList, 'Details'>) => {
      
@@ -25,7 +26,7 @@ const Details = (   { route, navigation}: NativeStackScreenProps<RootParamList, 
     
 
      const handleCapital=(capital : any)=>{
-         axios.get(`http://api.weatherstack.com/current?access_key=0e0eb620c4908d7ec0aaf255118dc362&query=${capital}`)
+         axios.get(`http://api.weatherstack.com/current?access_key=c9749b9bde72adf4743f67678229e5e8&query=${capital}`)
            .then((res)=>{
              const result = res.data
               
