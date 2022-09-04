@@ -30,7 +30,7 @@ const FormInput = ({route , navigation}: NativeStackScreenProps<RootParamList, '
            
         })
         .catch((err)=>{
-            alert(err.message)
+            alert(`Country Not Found -${err.message}`)
 
         })
          if(cap.length !== 0){
@@ -61,7 +61,7 @@ const FormInput = ({route , navigation}: NativeStackScreenProps<RootParamList, '
   return (
      <ScrollView>
     <View style={Styles.container}>
-       
+               
              <View style={Styles.input}>
              <TextInput placeholder='Search..' value={country} onChangeText={(val)=>setCountry(val)} />
              </View>
@@ -89,9 +89,10 @@ const Styles = StyleSheet.create({
      container : {
         paddingTop : 80,
         textAlign : 'center',
-        marginLeft : 50
+        marginLeft : 80
      },
      input : {
+        marginTop : 200,
         padding : 10,
         borderWidth : 1,
         width : 250,
@@ -100,7 +101,7 @@ const Styles = StyleSheet.create({
 
      },
      button : {
-         paddingTop : 50,
+         paddingTop : 60,
          width : 100,
          marginLeft : 70,
          borderRadius : 7
