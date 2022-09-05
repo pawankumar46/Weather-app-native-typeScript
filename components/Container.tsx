@@ -23,12 +23,13 @@ export default function Container() {
                <Stack.Navigator initialRouteName='InputForm' 
                           screenOptions={{
                             headerStyle : {
-                              backgroundColor : 'lightblue'
+                              backgroundColor : 'lightblue',
+                               
                             },
                             headerTintColor : 'black'
                             
                           }}>
-                      <Stack.Screen name='InputForm' component={FormInput}  options={{title : 'Weather-App'}} />
+                      <Stack.Screen name='InputForm' component={FormInput}  options={{title : 'Weather-App'}}  />
                       <Stack.Screen name='Details'  component={Details} options={{title : 'country details'}} />
                        <Stack.Screen  name ='Capital' component={Weather} options={{title : 'Capital weather'}} />
                </Stack.Navigator>
@@ -41,17 +42,8 @@ export default function Container() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'beige',
-    alignItems: 'center',
-    paddingTop : 80,
-    
-    
-  },
-   text : {
-    fontSize : 20,
-    fontWeight : 'bold'
-   }
-   
-});
+    header : {
+       textAlign : 'justify'
+    }
+})
+

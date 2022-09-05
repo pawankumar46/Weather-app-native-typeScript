@@ -8,49 +8,70 @@ import { RootParamList } from './Container';
 
 
 
-const FormInput = ({route , navigation}: NativeStackScreenProps<RootParamList, 'InputForm'> ) => {
+const FormInput = ({ navigation}: NativeStackScreenProps<RootParamList, 'InputForm'> ) => {
      const [country , setCountry] = useState('')
-     const [data , setData] = useState([])
+   //  const [data , setData] = useState([])
     //  const [capital , setCapital] = useState('')
      
-    
+   
+       //       let cap = result.map((ele : any)=> ele.capital)
+      //        let population = result.map((ele : any)=> ele.population)
+      //        let long = result.map((ele : any)=> ele.capitalInfo.latlng[0])
+      //        let lng = result.map((ele : any)=> ele.capitalInfo.latlng[1])
+      //        let flag = result.map((ele: any)=>ele.flags.png)
+   
      
-      let cap = data.map((ele : any)=> ele.capital)
-      let population = data.map((ele : any)=> ele.population)
-      let long = data.map((ele : any)=> ele.capitalInfo.latlng[0])
-      let lng = data.map((ele : any)=> ele.capitalInfo.latlng[1])
-      let flag = data.map((ele: any)=>ele.flags.png)
-
-      
+     
      
      const handlePress  = () => {
-        axios.get(`https://restcountries.com/v3.1/name/${country}`)
-        .then((res)=>{
-            setData(res.data)
-           
-        })
-        .catch((err)=>{
-            alert(`Country Not Found -${err.message}`)
+      axios.get(`https://restcountries.com/v3.1/name/${country}`)
+      .then((res)=>{
+          const result = res.data
 
-        })
-         if(cap.length !== 0){
-            navigation.navigate( 'Details',{
-               cap: cap[0],
-               population : population,
-               long : long ,
-               lng : lng ,
-               flag : flag[0]
-               
-             })
-         }
-         if(country.length > 0){
-           
-        setData([])
-        
-         }
-        
+         // setData(result) 
+          let cap = result.map((ele : any)=> ele.capital)
+          let population = result.map((ele : any)=> ele.population)
+          let long = result.map((ele : any)=> ele.capitalInfo.latlng[0])
+          let lng = result.map((ele : any)=> ele.capitalInfo.latlng[1])
+          let flag = result.map((ele: any)=>ele.flags.png)
+
+          navigation.navigate( 'Details',{
+            cap: cap[0],
+            population : population,
+            long : long ,
+            lng : lng ,
+            flag : flag[0]
+            
+          })
+          
+      })
+      .catch((err)=>{
+          alert(err.message)
+
+      })
       }
        
+      // const handlePress  = () => {
+      //    axios.get(`https://restcountries.com/v3.1/name/${country}`)
+      //    .then((res)=>{
+      //        const result = res.data
+         //       setData(result) 
+         //     })
+         // .catch((err)=>{
+         //     alert(err.message)
+         // })
+
+         //  setTimeout(()=>{
+         //    navigation.navigate( 'Details',{
+         //       cap: cap[0],
+         //       population : population,
+         //       long : long ,
+         //       lng : lng ,
+         //       flag : flag[0]
+               
+         //     })
+         //  },3000)
+         // }
 
     //   const handleCapital=(data : string )=>{
     //       setCapital(data)

@@ -8,21 +8,23 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRoute } from '@react-navigation/native'
 
 // const key1 : any = 0e0eb620c4908d7ec0aaf255118dc362
- const key2 : string | number = 'c9749b9bde72adf4743f67678229e5e8'
+ //const key2 : any = c9749b9bde72adf4743f67678229e5e8
  
-const Details = (   { route, navigation}: NativeStackScreenProps<RootParamList, 'Details'>) => {
+const Details = ({ route, navigation}: NativeStackScreenProps<RootParamList, 'Details'>) => {
      
 
    //const route = useRoute()
-   // console.log( 'yahoo',route.params)
+    console.log( 'details',route.params)
+  
+      
 
-    const [weather ,setWeather] = useState({
-         name : '',
-         temp : '',
-         wind : '',
-         precipitation : '',
-         icon : 'loading'
-    })
+    // const [weather ,setWeather] = useState({
+    //      name : '',
+    //      temp : '',
+    //      wind : '',
+    //      precipitation : '',
+    //      icon : 'loading'
+    // })
     
 
      const handleCapital=(capital : any)=>{
@@ -30,25 +32,28 @@ const Details = (   { route, navigation}: NativeStackScreenProps<RootParamList, 
            .then((res)=>{
              const result = res.data
               
-               setWeather({
+             navigation.navigate('Capital',{
                   name : result.location.name,
                   temp : result.current.temperature,
                   wind : result.current.wind_speed,
                   precipitation : result.current.precip,
                   icon : result.current.weather_icons[0]
                })
+               
+              
+              //   name : weather.name ,
+              //   temp : weather.temp,
+              //   wind : weather.wind,
+              //   precipitation : weather.precipitation,
+              //   icon : weather.icon
+              // })
+             
               })
           .catch((err)=>{
             alert(err.message)
           })
-         
-           navigation.navigate('Capital',{
-             name : weather.name ,
-             temp : weather.temp,
-             wind : weather.wind,
-             precipation : weather.precipitation,
-             icon : weather.icon
-           })
+              
+           
        }
     //    console.log(weather)
   return (

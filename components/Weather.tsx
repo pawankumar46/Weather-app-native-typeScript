@@ -31,7 +31,7 @@ const Weather = ( {route, navigation}: NativeStackScreenProps<RootParamList, 'Ca
             <Text style={styles.word}> place= {route.params?.name}</Text>
             <Text style={styles.word}>temp = {route.params?.temp} C</Text>
             <Text style={styles.word}>wind-speed={route.params?.wind}</Text>
-            <Text style={styles.word}>Precipitation = {route.params?.precipation}</Text>
+            <Text style={styles.word}>Precipitation = {route.params?.precipitation}</Text>
             </View>
             <Image  style={styles.icon} source={{}} />
             <View style={styles.btn}>
